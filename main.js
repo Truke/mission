@@ -72,34 +72,14 @@
     }
 
     if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      event.preventDefault();
+      showStatus("本地预览模式：表单校验通过。部署到 Netlify 后可正式提交。", "success");
       return;
     }
 
-    event.preventDefault();
     const submitBtn = form.querySelector('[type="submit"]');
-    const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = "提交中…";
-
-    try {
-      const body = new URLSearchParams(new FormData(form)).toString();
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
-      });
-
-      if (response.ok) {
-        window.location.href = "/thank-you";
-      } else {
-        showStatus("提交失败，请稍后重试或直接联系我们。", "error");
-      }
-    } catch {
-      showStatus("网络异常，请检查连接后重试。", "error");
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }
   });
 
   function showStatus(message, type) {
