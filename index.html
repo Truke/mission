@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="使命必达 — 在指定时间准时通知您。电话、邮件、短信、微信，多种方式，隐私优先。">
+  <title>使命必达 | The Mission Must Be Achieved</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon" aria-hidden="true">🎯</span>
+        <span class="logo-text">
+          <strong>使命必达</strong>
+          <small>The mission must be achieved</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#services">服务</a>
+        <a href="#privacy">隐私</a>
+        <a href="#faq">常见问题</a>
+        <a href="#mission-form" class="nav-cta">立即预约</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="mission-form">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">准时 · 可靠 · 私密</p>
+          <h1>使命必达<br><span class="en">The mission must be achieved</span></h1>
+          <p class="hero-desc">
+            在未来某个时间点或时间段，我们将按您指定的方式准时通知您。
+            通知内容可由您填写，也可由我们主动联系确认——全程注重隐私保护。
+          </p>
+          <ul class="hero-features">
+            <li>📞 电话提醒</li>
+            <li>✉️ 邮件通知</li>
+            <li>💬 短信 / 微信</li>
+          </ul>
+        </div>
+
+        <div class="form-card">
+          <h2>预约使命通知</h2>
+          <p class="form-subtitle">填写表单，我们将在约定时间送达您的使命</p>
+
+          <form
+            name="mission"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you"
+            id="mission-form-el"
+          >
+            <input type="hidden" name="form-name" value="mission">
+            <input type="hidden" name="subject" value="【使命必达】新预约请求">
+
+            <p class="hp-field" aria-hidden="true">
+              <label>请勿填写：<input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            </p>
+
+            <div class="field">
+              <label for="nickname">称呼 <span class="optional">选填</span></label>
+              <input type="text" id="nickname" name="nickname" placeholder="昵称或代号即可" autocomplete="nickname">
+            </div>
+
+            <fieldset class="field">
+              <legend>通知方式 <span class="required">*</span></legend>
+              <div class="checkbox-grid">
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="notify_phone" value="电话">
+                  <span>电话拨打</span>
+                </label>
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="notify_email" value="邮件">
+                  <span>邮件</span>
+                </label>
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="notify_sms" value="短信">
+                  <span>短信</span>
+                </label>
+                <label class="checkbox-pill">
+                  <input type="checkbox" name="notify_wechat" value="微信">
+                  <span>微信</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">手机号</label>
+                <input type="tel" id="phone" name="phone" placeholder="用于电话 / 短信" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" placeholder="用于邮件通知" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="wechat">微信号 <span class="optional">选填</span></label>
+              <input type="text" id="wechat" name="wechat" placeholder="用于微信提醒">
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="notify_start">通知时间 <span class="required">*</span></label>
+                <input type="datetime-local" id="notify_start" name="notify_start" required>
+              </div>
+              <div class="field">
+                <label for="notify_end">结束时间 <span class="optional">选填</span></label>
+                <input type="datetime-local" id="notify_end" name="notify_end">
+                <span class="hint">留空表示精确到某一时刻</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="content">通知内容</label>
+              <textarea id="content" name="content" rows="4" placeholder="请描述希望我们在通知时传达的内容…"></textarea>
+            </div>
+
+            <label class="checkbox-inline">
+              <input type="checkbox" name="contact_confirm" value="是">
+              <span>希望工作人员主动联系，共同确认通知内容</span>
+            </label>
+
+            <label class="checkbox-inline privacy-check">
+              <input type="checkbox" name="privacy_consent" value="已同意" required>
+              <span>我已阅读并同意 <a href="#privacy">隐私政策</a>，授权在约定时间通过选定方式联系我</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary btn-block">提交使命预约</button>
+            <p class="form-note">🔒 您的联系方式与内容仅用于本次通知，不会用于营销或第三方共享。</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title">我们如何送达您的使命</h2>
+        <p class="section-desc">多种触达方式，灵活组合，确保关键时刻不错过</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">📞</div>
+            <h3>电话提醒</h3>
+            <p>在指定时间主动拨打，亲口传达您预设的重要事项。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">✉️</div>
+            <h3>邮件通知</h3>
+            <p>准时发送结构化邮件，适合需要留痕的正式提醒。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">💬</div>
+            <h3>短信 & 微信</h3>
+            <p>轻量即时触达，适合日常备忘与紧急提醒场景。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🤝</div>
+            <h3>人工确认</h3>
+            <p>内容不确定？勾选联系确认，我们将与您沟通后再执行。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="privacy">
+      <div class="container privacy-grid">
+        <div>
+          <h2 class="section-title">隐私优先</h2>
+          <p class="section-desc">您的信任是「使命必达」的基石。我们采用最小化收集原则，只保留完成通知所必需的信息。</p>
+        </div>
+        <ul class="privacy-list">
+          <li>
+            <strong>最小化收集</strong>
+            <span>仅收集完成通知所需的联系方式与时间、内容信息。</span>
+          </li>
+          <li>
+            <strong>用途限定</strong>
+            <span>数据仅用于本次预约的通知执行，不作广告或转售用途。</span>
+          </li>
+          <li>
+            <strong>安全传输</strong>
+            <span>表单通过 HTTPS 加密提交，传输过程受保护。</span>
+          </li>
+          <li>
+            <strong>任务完成后删除</strong>
+            <span>通知完成后，您可要求删除相关个人信息。</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-list">
+          <details>
+            <summary>可以预约未来的任意时间吗？</summary>
+            <p>可以。请选择具体的日期与时间；若需在一段时间内多次提醒，请填写结束时间并备注需求。</p>
+          </details>
+          <details>
+            <summary>通知内容必须现在写好吗？</summary>
+            <p>不必。您可在表单中填写草案，或勾选「主动联系确认」，我们将与您沟通后再定稿。</p>
+          </details>
+          <details>
+            <summary>支持哪些联系方式？</summary>
+            <p>目前支持电话、邮件、短信与微信。您可多选，我们会按可行方式执行；具体以实际服务能力为准。</p>
+          </details>
+          <details>
+            <summary>我的信息会被保存多久？</summary>
+            <p>默认在任务完成后保留短期以便售后跟进；您可随时联系我们要求删除。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>使命必达</strong>
+        <span>The mission must be achieved</span>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> 使命必达. 准时送达，使命必达。</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
